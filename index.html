@@ -2,9 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="世界のAIニュースを、非エンジニアにもわかりやすくまとめて表示">
+  <meta name="theme-color" content="#1a1614">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AI News">
   <title>🌍 World AI News</title>
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="manifest" href="./manifest.json">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,6 +22,11 @@
       <p class="header__subtitle">世界のAIニュースを、きくりんにもわかりやすく</p>
     </div>
   </header>
+
+  <aside class="install-hint" id="install-hint" hidden>
+    <p class="install-hint__text">📱 iPhoneで使うなら、共有ボタン → <strong>ホーム画面に追加</strong></p>
+    <button type="button" class="install-hint__close" id="install-hint-close" aria-label="閉じる">×</button>
+  </aside>
 
   <main class="main">
     <section class="filters" aria-label="カテゴリフィルター">
@@ -43,7 +56,7 @@
   </main>
 
   <footer class="footer">
-    <p>v1 — サンプルデータで動作中。今後、News API と連携予定。</p>
+    <p>v1 — 4G/5G/Wi-Fi どれでもOK。サンプルデータで動作中。</p>
   </footer>
 
   <script src="app.js"></script>

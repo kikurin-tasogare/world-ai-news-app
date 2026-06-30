@@ -27,7 +27,16 @@ world-ai-news-app/
 
 **https://kikurin-tasogare.github.io/world-ai-news-app/**
 
-> 初回のみ、リポジトリの Settings → Pages で有効化が必要です（下記参照）。
+Wi-Fi・4G・5G どれでも使えます（HTTPS 公開済み）。
+
+### iPhone に追加する（おすすめ）
+
+1. Safari で上記 URL を開く
+2. 下の **共有ボタン**（□↑）をタップ
+3. **ホーム画面に追加** を選ぶ
+4. ホーム画面のアイコンからアプリのように起動できます
+
+> 一度開くとオフラインでもキャッシュから表示されます（Service Worker 対応）。
 
 ## GitHub Pages の有効化（初回1回）
 

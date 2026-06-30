@@ -126,9 +126,43 @@ function render() {
   }
 }
 
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch((err) => {
+      console.warn('Service worker registration failed:', err);
+    });
+  });
+}
+
+function setupInstallHint() {
+  const hint = document.getElementById('install-hint');
+  const closeBtn = document.getElementById('install-hint-close');
+  if (!hint || !closeBtn) return;
+
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true;
+  const dismissed = localStorage.getItem('install-hint-dismissed') === '1';
+
+  if (isIOS && !isStandalone && !dismissed) {
+    hint.hidden = false;
+  }
+
+  closeBtn.addEventListener('click', () => {
+    hint.hidden = true;
+    localStorage.setItem('install-hint-dismissed', '1');
+  });
+}
+
 async function init() {
+  registerServiceWorker();
+  setupInstallHint();
+
   try {
-    const response = await fetch(DATA_URL);
+    const response = await fetch(DATA_URL, { cache: 'no-cache' });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -138,8 +172,9 @@ async function init() {
   } catch (err) {
     newsListEl.innerHTML = '';
     emptyStateEl.hidden = false;
-    emptyStateEl.textContent =
-      'ニュースの読み込みに失敗しました。ローカルサーバーで開いているか確認してください。';
+    emptyStateEl.textContent = navigator.onLine
+      ? 'ニュースの読み込みに失敗しました。しばらくしてから再度お試しください。'
+      : 'オフラインです。一度読み込んだニュースはキャッシュから表示できます。';
     resultCountEl.textContent = '';
     console.error('Failed to load news:', err);
   }
