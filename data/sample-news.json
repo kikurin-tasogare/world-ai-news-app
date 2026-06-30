@@ -6,6 +6,7 @@
       "title": "ChatGPT Gets Memory for Custom Instructions",
       "summary": "ChatGPTが、あなたの好みや仕事のスタイルを覚えておける機能を強化しました。毎回同じ説明を繰り返す必要が減り、Podcast原稿やブログの下書きがスムーズになります。設定画面から「カスタム指示」をオンにするだけで使えます。",
       "source": "OpenAI Blog",
+      "url": "https://openai.com/blog",
       "date": "2026-06-28",
       "category": "日常で使えるAI",
       "level": "非エンジニアOK"
@@ -15,6 +16,7 @@
       "title": "Google Gemini Adds Real-Time Web Search in Japan",
       "summary": "GoogleのGeminiが日本語でリアルタイム検索に対応しました。最新のニュースや株価、天気を会話の中で調べられるので、調べ物の時間が短くなります。スマホのGeminiアプリからすぐ試せます。",
       "source": "Google DeepMind",
+      "url": "https://deepmind.google/discover/blog/",
       "date": "2026-06-27",
       "category": "日常で使えるAI",
       "level": "非エンジニアOK"
@@ -24,6 +26,7 @@
       "title": "AI Writing Tools Help Freelancers Save 5 Hours a Week",
       "summary": "フリーランス向けのAI執筆ツールが、提案文や請求書の作成を自動化する機能を追加しました。文章の下書きをAIが作り、人間が仕上げる「半自動」スタイルが人気です。月額2,000円前後から使えるサービスが増えています。",
       "source": "TechCrunch",
+      "url": "https://techcrunch.com/category/artificial-intelligence/",
       "date": "2026-06-26",
       "category": "AIで稼ぐ・ビジネス",
       "level": "どっちでも"
@@ -33,6 +36,7 @@
       "title": "Voice Cloning Scams Target Small Business Owners",
       "summary": "AIで作った偽の声を使った詐欺が急増しています。社長や家族の声を真似て「今すぐ送金して」と電話する手口が報告されています。電話でお金の話が出たら、必ず別の方法で本人確認を取る習慣をつけましょう。",
       "source": "BBC News",
+      "url": "https://www.bbc.com/news/technology",
       "date": "2026-06-29",
       "category": "セキュリティ",
       "level": "非エンジニアOK"
@@ -42,6 +46,7 @@
       "title": "Midjourney v7 Brings More Natural Photo Styles",
       "summary": "画像生成AIのMidjourneyが新バージョンを公開しました。人物や風景がより自然に見えるようになり、SNS用のサムネイルやブログのアイキャッチ制作が手軽になります。日本語のプロンプトにも対応が改善されています。",
       "source": "The Verge",
+      "url": "https://www.theverge.com/ai-artificial-intelligence",
       "date": "2026-06-25",
       "category": "創作・クリエイティブ",
       "level": "どっちでも"
@@ -51,6 +56,7 @@
       "title": "Notion AI Now Summarizes Long Meeting Notes",
       "summary": "Notion AIが長い議事録を3行で要約する機能を追加しました。打ち合わせ後の整理時間が大幅に短縮されます。Podcastの企画メモやクライアントとのやり取りも、フォルダごとにまとめて要約できます。",
       "source": "Notion Blog",
+      "url": "https://www.notion.so/blog",
       "date": "2026-06-24",
       "category": "創作・クリエイティブ",
       "level": "非エンジニアOK"
@@ -60,6 +66,7 @@
       "title": "EU Passes New Rules on AI in Hiring Decisions",
       "summary": "EUが採用・昇進の判断にAIを使う企業への規制を強化しました。アルゴリズムの透明性や人間による最終確認が義務付けられます。日本でも同様の議論が始まっており、AI時代の働き方に関心がある人はチェックしておくとよい話題です。",
       "source": "Reuters",
+      "url": "https://www.reuters.com/technology/artificial-intelligence/",
       "date": "2026-06-23",
       "category": "社会・倫理",
       "level": "どっちでも"
@@ -69,6 +76,7 @@
       "title": "Anthropic Releases Claude 4 with 1M Token Context",
       "summary": "AnthropicがClaude 4を発表し、一度に100万トークン（約75万語）の文書を処理できるようになりました。大規模なコードベースの分析や長編ドキュメントの横断検索が可能です。API経由での利用が中心で、開発者向けの機能が中心です。",
       "source": "Anthropic",
+      "url": "https://www.anthropic.com/news",
       "date": "2026-06-30",
       "category": "エンジニア向け",
       "level": "エンジニア向け"

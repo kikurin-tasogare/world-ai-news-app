@@ -105,6 +105,32 @@ function getFilteredNews() {
   });
 }
 
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function isSafeUrl(url) {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+function renderSourceLink(item) {
+  const source = escapeHtml(item.source);
+
+  if (item.url && isSafeUrl(item.url)) {
+    const href = escapeHtml(item.url);
+    return `<a class="news-card__source-link" href="${href}" target="_blank" rel="noopener noreferrer">📰 ${source} <span class="news-card__source-arrow" aria-hidden="true">↗</span></a>`;
+  }
+
+  return `<span class="news-card__source">📰 ${source}</span>`;
+}
+
 function renderNewsCard(item, index) {
   const badge = LEVEL_BADGE[item.level] || LEVEL_BADGE['どっちでも'];
 
@@ -121,15 +147,9 @@ function renderNewsCard(item, index) {
       </div>
       <h2 class="news-card__title">${escapeHtml(item.title)}</h2>
       <p class="news-card__summary">${escapeHtml(item.summary)}</p>
-      <p class="news-card__source">${escapeHtml(item.source)}</p>
+      ${renderSourceLink(item)}
     </article>
   `;
-}
-
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
 }
 
 function updateResultCount(filteredCount) {

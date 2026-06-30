@@ -263,13 +263,34 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.news-card__source {
+.news-card__source,
+.news-card__source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   font-size: 0.75rem;
   color: var(--text-subtle);
+  margin-top: 0.25rem;
 }
 
-.news-card__source::before {
-  content: "📰 ";
+.news-card__source-link {
+  color: var(--accent);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  min-height: 44px;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.news-card__source-link:hover,
+.news-card__source-link:focus-visible {
+  color: var(--text);
+  text-decoration: underline;
+  outline: none;
+}
+
+.news-card__source-arrow {
+  font-size: 0.6875rem;
+  opacity: 0.8;
 }
 
 /* Install hint (iPhone) */
