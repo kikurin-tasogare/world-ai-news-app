@@ -124,6 +124,17 @@ function buildTranslateUrl(url) {
   return `https://translate.google.com/translate?hl=ja&sl=auto&tl=ja&u=${encodeURIComponent(url)}`;
 }
 
+function renderTitle(item) {
+  const title = escapeHtml(item.title);
+
+  if (item.url && isSafeUrl(item.url)) {
+    const href = escapeHtml(item.url);
+    return `<a class="news-card__title-link" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${title}（別タブで開く）">${title}</a>`;
+  }
+
+  return title;
+}
+
 function renderSourceLink(item) {
   const source = escapeHtml(item.source);
 
@@ -159,7 +170,7 @@ function renderNewsCard(item, index) {
           ${formatDate(item.date)}
         </time>
       </div>
-      <h2 class="news-card__title">${escapeHtml(item.title)}</h2>
+      <h2 class="news-card__title">${renderTitle(item)}</h2>
       <p class="news-card__summary">${escapeHtml(item.summary)}</p>
       ${renderSourceLink(item)}
     </article>
