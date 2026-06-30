@@ -120,12 +120,26 @@ function isSafeUrl(url) {
   }
 }
 
+function buildTranslateUrl(url) {
+  return `https://translate.google.com/translate?hl=ja&sl=auto&tl=ja&u=${encodeURIComponent(url)}`;
+}
+
 function renderSourceLink(item) {
   const source = escapeHtml(item.source);
 
   if (item.url && isSafeUrl(item.url)) {
     const href = escapeHtml(item.url);
-    return `<a class="news-card__source-link" href="${href}" target="_blank" rel="noopener noreferrer">📰 ${source} <span class="news-card__source-arrow" aria-hidden="true">↗</span></a>`;
+    const translateHref = escapeHtml(buildTranslateUrl(item.url));
+    return `
+      <div class="news-card__links">
+        <a class="news-card__source-link" href="${href}" target="_blank" rel="noopener noreferrer">
+          📰 ${source} <span class="news-card__source-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="news-card__translate-link" href="${translateHref}" target="_blank" rel="noopener noreferrer">
+          🌐 日本語で読む <span class="news-card__source-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    `;
   }
 
   return `<span class="news-card__source">📰 ${source}</span>`;
