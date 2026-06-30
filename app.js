@@ -1,6 +1,6 @@
 /**
  * World AI News — v1
- * サンプルJSONからニュースを読み込み、カテゴリ・レベルでフィルター表示
+ * タブ操作で最新ニュースを取得し、カテゴリ・レベルでフィルター表示
  */
 
 const DATA_URL = './data/sample-news.json';
@@ -29,14 +29,17 @@ const LEVEL_BADGE = {
 };
 
 let allNews = [];
+let lastUpdatedAt = null;
 let activeCategory = 'すべて';
 let activeLevel = 'すべて';
+let isLoading = false;
 
 const categoryFiltersEl = document.getElementById('category-filters');
 const levelFiltersEl = document.getElementById('level-filters');
 const newsListEl = document.getElementById('news-list');
 const resultCountEl = document.getElementById('result-count');
 const emptyStateEl = document.getElementById('empty-state');
+const mainEl = document.querySelector('.main');
 
 function formatDate(dateStr) {
   const date = new Date(dateStr + 'T00:00:00');
@@ -45,6 +48,34 @@ function formatDate(dateStr) {
     month: 'long',
     day: 'numeric',
   });
+}
+
+function formatUpdatedAt(isoStr) {
+  if (!isoStr) return '';
+  const date = new Date(isoStr);
+  return date.toLocaleString('ja-JP', {
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+function parseNewsPayload(data) {
+  if (Array.isArray(data)) {
+    return { articles: data, updatedAt: null };
+  }
+  return {
+    articles: data.articles || [],
+    updatedAt: data.updatedAt || null,
+  };
+}
+
+function setLoading(loading) {
+  isLoading = loading;
+  if (mainEl) {
+    mainEl.classList.toggle('is-loading', loading);
+  }
 }
 
 function createFilterButtons(container, items, activeValue, onSelect) {
@@ -57,6 +88,7 @@ function createFilterButtons(container, items, activeValue, onSelect) {
     btn.type = 'button';
     btn.className = 'filter-btn' + (value === activeValue ? ' filter-btn--active' : '');
     btn.textContent = label;
+    btn.disabled = isLoading;
     btn.setAttribute('aria-pressed', value === activeValue ? 'true' : 'false');
     btn.addEventListener('click', () => onSelect(value));
     container.appendChild(btn);
@@ -100,30 +132,96 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-function render() {
+function updateResultCount(filteredCount) {
+  const updatedLabel = lastUpdatedAt
+    ? ` · 更新 ${formatUpdatedAt(lastUpdatedAt)}`
+    : '';
+
+  if (isLoading) {
+    resultCountEl.textContent = '更新中...';
+    return;
+  }
+
+  resultCountEl.textContent = `${filteredCount}件のニュース${updatedLabel}`;
+}
+
+function renderNewsList() {
   const filtered = getFilteredNews();
-
-  createFilterButtons(categoryFiltersEl, CATEGORIES, activeCategory, (value) => {
-    activeCategory = value;
-    render();
-  });
-
-  createFilterButtons(levelFiltersEl, LEVELS, activeLevel, (value) => {
-    activeLevel = value;
-    render();
-  });
 
   if (filtered.length === 0) {
     newsListEl.innerHTML = '';
     emptyStateEl.hidden = false;
-    resultCountEl.textContent = '0件のニュース';
+    emptyStateEl.textContent =
+      '条件に合うニュースがありません。別のタブを試すか、もう一度タップして更新してください。';
   } else {
     emptyStateEl.hidden = true;
     newsListEl.innerHTML = filtered
       .map((item, i) => renderNewsCard(item, i))
       .join('');
-    resultCountEl.textContent = `${filtered.length}件のニュース`;
   }
+
+  updateResultCount(filtered.length);
+}
+
+function renderFilters() {
+  createFilterButtons(categoryFiltersEl, CATEGORIES, activeCategory, (value) => {
+    activeCategory = value;
+    refreshNews();
+  });
+
+  createFilterButtons(levelFiltersEl, LEVELS, activeLevel, (value) => {
+    activeLevel = value;
+    refreshNews();
+  });
+}
+
+function render() {
+  renderFilters();
+  renderNewsList();
+}
+
+async function loadNews({ showLoading = true } = {}) {
+  if (isLoading) return;
+
+  setLoading(showLoading);
+  renderFilters();
+  updateResultCount(getFilteredNews().length);
+
+  try {
+    const url = `${DATA_URL}?t=${Date.now()}`;
+    const response = await fetch(url, { cache: 'no-store' });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    const { articles, updatedAt } = parseNewsPayload(data);
+
+    allNews = articles;
+    lastUpdatedAt = updatedAt || response.headers.get('last-modified');
+    allNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+  } catch (err) {
+    if (allNews.length === 0) {
+      newsListEl.innerHTML = '';
+      emptyStateEl.hidden = false;
+      emptyStateEl.textContent = navigator.onLine
+        ? 'ニュースの読み込みに失敗しました。タブをもう一度タップして更新してください。'
+        : 'オフラインです。通信が戻ったらタブをタップして更新してください。';
+      resultCountEl.textContent = '';
+      console.error('Failed to load news:', err);
+      setLoading(false);
+      return;
+    }
+    console.warn('Refresh failed, showing cached news:', err);
+  }
+
+  setLoading(false);
+  render();
+}
+
+function refreshNews() {
+  loadNews({ showLoading: true });
 }
 
 function registerServiceWorker() {
@@ -157,27 +255,10 @@ function setupInstallHint() {
   });
 }
 
-async function init() {
+function init() {
   registerServiceWorker();
   setupInstallHint();
-
-  try {
-    const response = await fetch(DATA_URL, { cache: 'no-cache' });
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-    allNews = await response.json();
-    allNews.sort((a, b) => new Date(b.date) - new Date(a.date));
-    render();
-  } catch (err) {
-    newsListEl.innerHTML = '';
-    emptyStateEl.hidden = false;
-    emptyStateEl.textContent = navigator.onLine
-      ? 'ニュースの読み込みに失敗しました。しばらくしてから再度お試しください。'
-      : 'オフラインです。一度読み込んだニュースはキャッシュから表示できます。';
-    resultCountEl.textContent = '';
-    console.error('Failed to load news:', err);
-  }
+  loadNews({ showLoading: false });
 }
 
 init();

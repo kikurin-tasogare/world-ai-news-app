@@ -1,4 +1,4 @@
-const CACHE_NAME = 'world-ai-news-v1';
+const CACHE_NAME = 'world-ai-news-v2';
 
 const ASSETS = [
   './',
@@ -30,6 +30,23 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+
+  const isNewsData = event.request.url.includes('sample-news.json');
+
+  if (isNewsData) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
 
   event.respondWith(
     fetch(event.request)
