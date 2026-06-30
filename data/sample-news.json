@@ -1,11 +1,171 @@
 {
-  "updatedAt": "2026-06-30T05:26:40.381Z",
+  "updatedAt": "2026-06-30T06:08:25.125Z",
   "source": "News API",
   "articles": [
     {
       "id": 1,
+      "title": "Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead",
+      "summary": "ファーウェイなどの中国企業が自国市場でエヌビディアなどの世界的な業界リーダーを追い越す中、ハードウェアとコンピューティング能力をめぐる争いは激化している。",
+      "source": "Abcnews.com",
+      "url": "https://abcnews.com/Technology/wireStory/nvidias-ai-chip-sales-china-stall-local-chipmakers-134299960",
+      "date": "2026-06-29",
+      "category": "AIで稼ぐ・ビジネス",
+      "level": "どっちでも"
+    },
+    {
+      "id": 2,
+      "title": "Quadrasystems.net Among the First in India to Achieve ISO/IEC 42001:2023, the World's First International Standard for AI Management Systems",
+      "summary": "インドで初めてAIマネジメントシステムの世界初の国際規格であるISO/IEC42001:2023を取得。",
+      "source": "BusinessLine",
+      "url": "https://www.thehindubusinessline.com/brandhub/pr-release/quadrasystems-net-among-the-first-in-india-to-achieve-iso-iec-42001-2023-the-worlds-first-international-standard-for-ai-management-systems/article71160187.ece",
+      "date": "2026-06-29",
+      "category": "社会・倫理",
+      "level": "どっちでも"
+    },
+    {
+      "id": 3,
+      "title": "Soitec and ZenSemi Partner to Scale 300mm BCD-on-SOI Production for Next-Generation Power Electronics",
+      "summary": "ベルナン(グルノーブル)、フランス、2026年6月29日-革新的な半導体材料の設計と製造の世界的リーダーであるSoitecと、中国の主要な専門ファウンドリであるZenSemiは本日…",
+      "source": "GlobeNewswire",
+      "url": "https://www.globenewswire.com/news-release/2026/06/29/3318663/0/en/Soitec-and-ZenSemi-Partner-to-Scale-300mm-BCD-on-SOI-Production-for-Next-Generation-Power-Electronics.html",
+      "date": "2026-06-29",
+      "category": "創作・クリエイティブ",
+      "level": "どっちでも"
+    },
+    {
+      "id": 4,
+      "title": "Nuclearâs raw comeback: AI hunger, war panic, and the death of the green grid fantasy",
+      "summary": "ネットゼロのイデオロギーに屈することなく、生の力を最大限に活用することが、安全な国家の将来の青写真です。",
+      "source": "Naturalnews.com",
+      "url": "https://www.naturalnews.com/2026-06-29-nuclears-raw-comeback-ai-hunger-war-panic.html",
+      "date": "2026-06-29",
+      "category": "エンジニア向け",
+      "level": "エンジニア向け"
+    },
+    {
+      "id": 5,
+      "title": "China’s LineShine Supercomputer Named Fastest in the World, Topping U.S.-Built El Capitan",
+      "summary": "中国のLineShineスーパーコンピューターが、最新のTOP500ランキングで米国製のElCapitanを上回り、世界最速に選ばれました。",
+      "source": "Naturalnews.com",
+      "url": "https://www.naturalnews.com/2026-06-29-lineshine-supercomputer-named-fastest-in-the-world.html",
+      "date": "2026-06-29",
+      "category": "エンジニア向け",
+      "level": "エンジニア向け"
+    },
+    {
+      "id": 6,
+      "title": "Google Loses Two More AI Researchers to Anthropic",
+      "summary": "引用したブルームバーグの報道によると、アルファベット傘下のグーグルの人工知能（AI）研究のトップ2名が、ライバルのアンスロピック社への退職を計画しており…",
+      "source": "Naturalnews.com",
+      "url": "https://www.naturalnews.com/2026-06-29-google-loses-two-more-ai-researchers-anthropic.html",
+      "date": "2026-06-29",
+      "category": "創作・クリエイティブ",
+      "level": "どっちでも"
+    },
+    {
+      "id": 7,
+      "title": "Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead",
+      "summary": "ファーウェイなどの中国企業が自国市場でエヌビディアなどの世界的な業界リーダーを追い越す中、ハードウェアとコンピューティング能力をめぐる争いは激化している。",
+      "source": "Biztoc.com",
+      "url": "https://biztoc.com/x/f9abe1d6d86afa30",
+      "date": "2026-06-29",
+      "category": "AIで稼ぐ・ビジネス",
+      "level": "どっちでも"
+    },
+    {
+      "id": 8,
+      "title": "Asian shares mixed as tech stocks fall in Japan and South Korea",
+      "summary": "月曜日のアジア市場はまちまちで、人工知能関連株の売りで日本と韓国の指標値が下落したが、他の銘柄の上昇がそれらの下落を補った。",
+      "source": "BusinessLine",
+      "url": "https://www.thehindubusinessline.com/markets/asian-shares-mixed-as-tech-stocks-fall-in-japan-and-south-korea/article71160160.ece",
+      "date": "2026-06-29",
+      "category": "創作・クリエイティブ",
+      "level": "どっちでも"
+    },
+    {
+      "id": 9,
+      "title": "Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead",
+      "summary": "ファーウェイなどの中国企業が自国市場でエヌビディアなどの世界的な業界リーダーを追い越す中、ハードウェアとコンピューティング能力をめぐる争いは激化している。",
+      "source": "Abcnews.com",
+      "url": "https://abcnews.com/Business/wireStory/nvidias-ai-chip-sales-china-stall-local-chipmakers-134299959",
+      "date": "2026-06-29",
+      "category": "AIで稼ぐ・ビジネス",
+      "level": "どっちでも"
+    },
+    {
+      "id": 10,
+      "title": "Building AI-Powered Service Dependency Intelligence Platforms with .NET",
+      "summary": ".NETを使用してAIを活用したサービス依存関係インテリジェンスプラットフォームを構築し、分散システムの複雑さを理解、管理、軽減します。",
+      "source": "C-sharpcorner.com",
+      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-service-dependency-intelligence-platforms-with-net/",
+      "date": "2026-06-29",
+      "category": "社会・倫理",
+      "level": "どっちでも"
+    },
+    {
+      "id": 11,
+      "title": "Building AI-Powered API Deprecation Management Platforms with .NET",
+      "summary": ".NET、OpenTelemetry、AzureOpenAIを使用してAIを活用したAPI非推奨プラットフォームを構築し、より安全な廃止と迅速な移行を実現します。",
+      "source": "C-sharpcorner.com",
+      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-api-deprecation-management-platforms-with-net/",
+      "date": "2026-06-29",
+      "category": "エンジニア向け",
+      "level": "エンジニア向け"
+    },
+    {
+      "id": 12,
+      "title": "Building AI-Powered Deployment Risk Assessment Systems in ASP.NET Core",
+      "summary": "AIを活用した導入リスク評価システムをCoreに構築して、障害を予測し、戦略を最適化し、リリースの信頼性を高めます。",
+      "source": "C-sharpcorner.com",
+      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-deployment-risk-assessment-systems-in-asp-net-core/",
+      "date": "2026-06-29",
+      "category": "エンジニア向け",
+      "level": "エンジニア向け"
+    },
+    {
+      "id": 13,
+      "title": "Building AI-Powered Database Query Optimization Advisors with ASP.NET Core",
+      "summary": "Core、EFCore、AzureOpenAIを使用してAIを活用したデータベースクエリ最適化アドバイザーを構築し、クエリの高速化、コストの削減、スケーラビリティの向上を実現します。",
+      "source": "C-sharpcorner.com",
+      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-database-query-optimization-advisors-with-asp-net-core/",
+      "date": "2026-06-29",
+      "category": "社会・倫理",
+      "level": "どっちでも"
+    },
+    {
+      "id": 14,
+      "title": "Building AI-Powered Infrastructure Drift Detection Systems with .NET",
+      "summary": ".NET、Terraform、Azure、OpenAIを使用して、AIを活用したインフラストラクチャドリフト検出を構築します。",
+      "source": "C-sharpcorner.com",
+      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-infrastructure-drift-detection-systems-with-net/",
+      "date": "2026-06-29",
+      "category": "セキュリティ",
+      "level": "非エンジニアOK"
+    },
+    {
+      "id": 15,
+      "title": "Building AI-Powered Legacy Code Modernization Advisors with .NET",
+      "summary": ".NET、Roslyn、AzureOpenAIを使用してAIを活用したレガシーコードの最新化アドバイザーを構築し、データ駆動型の洞察とロードマップを迅速に取得します。",
+      "source": "C-sharpcorner.com",
+      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-legacy-code-modernization-advisors-with-net/",
+      "date": "2026-06-29",
+      "category": "社会・倫理",
+      "level": "どっちでも"
+    },
+    {
+      "id": 16,
+      "title": "Excessive AI spending risks global financial consequences, BIS warns",
+      "summary": "あるアナリストはこの報告書に応えて、「資金調達が巨額の負債とレバレッジの高いノンバンク構造に依存しており、急速に破綻する可能性があるため…",
+      "source": "Cointelegraph",
+      "url": "https://cointelegraph.com/news/bis-sounds-alarm-on-ai-exuberance-as-debt-fueled-boom-risks-bust",
+      "date": "2026-06-29",
+      "category": "社会・倫理",
+      "level": "どっちでも"
+    },
+    {
+      "id": 17,
       "title": "Best Prime Day Tablet Deals From Apple, Samsung and TCL - CNET",
-      "summary": "CNETから届いたニュースです。日常生活や仕事ですぐ試せるAIの話題です。「Best Prime Day Tablet Deals From Apple, Samsung and TCL - CNET」が話題になっており、Tons of Apple and Android models are still on sale, but these holdover bargains are sellin… くわしくは元記事から確認できます。",
+      "summary": "AppleとAndroidのモデルはまだ多数販売されていますが、これらのホールドオーバーバーゲン品は急速に売り切れています。",
       "source": "CNET",
       "url": "https://www.cnet.com/deals/best-prime-day-tablet-deals-2026-06-27/",
       "date": "2026-06-29",
@@ -13,9 +173,39 @@
       "level": "非エンジニアOK"
     },
     {
-      "id": 2,
+      "id": 18,
+      "title": "JP Morgan raises 2026 Stoxx 600 target to 680 as European equity optimism builds",
+      "summary": "JPモルガンの欧州株に対する強気の姿勢は、投資家の信頼の高まりを示唆しており、より多くの資本がこの地域の市場に流入する可能性がある。",
+      "source": "Crypto Briefing",
+      "url": "https://cryptobriefing.com/jp-morgan-raises-stoxx-600-target-680/",
+      "date": "2026-06-29",
+      "category": "社会・倫理",
+      "level": "非エンジニアOK"
+    },
+    {
+      "id": 19,
+      "title": "Lee: S. Korea must secure AI sector faster than others",
+      "summary": "韓国のイ・ジェミョン大統領は月曜日、韓国は半導体メーカーとしての地位を強化するために、主要な人工知能（AI）能力を他のどの国よりも早く確保する必要があると述べた。",
+      "source": "Biztoc.com",
+      "url": "https://biztoc.com/x/557876f7b71a87b8",
+      "date": "2026-06-29",
+      "category": "創作・クリエイティブ",
+      "level": "どっちでも"
+    },
+    {
+      "id": 20,
+      "title": "World's First Autonomous Mining IPO Draws Top-Tier Cornerstone Lineup Including Fidelity, JPMorgan, and Barings",
+      "summary": "世界初の自律型マイニングIPOにフィデリティ、JPモルガン、ベアリングスを含むトップクラスのコーナーストーンラインナップが集結。",
+      "source": "BusinessLine",
+      "url": "https://www.thehindubusinessline.com/brandhub/pr-release/worlds-first-autonomous-mining-ipo-draws-top-tier-cornerstone-lineup-including-fidelity-jpmorgan-and-barings/article71160143.ece",
+      "date": "2026-06-29",
+      "category": "社会・倫理",
+      "level": "どっちでも"
+    },
+    {
+      "id": 21,
       "title": "Asian shares are mixed as tech stocks fall in Japan and South Korea",
-      "summary": "WDIV ClickOnDetroitから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「Asian shares are mixed as tech stocks fall in Japan and South Korea」が話題になっており、Asian shares are mixed as tech stocks fall in Japan and South Koreaclickondetroit.com くわしくは元記事から確認できます。",
+      "summary": "日本と韓国のハイテク株が下落し、アジア株はまちまち。",
       "source": "WDIV ClickOnDetroit",
       "url": "https://www.clickondetroit.com/business/2026/06/29/asian-shares-are-mixed-as-tech-stocks-fall-in-japan-and-south-korea/",
       "date": "2026-06-29",
@@ -23,9 +213,9 @@
       "level": "どっちでも"
     },
     {
-      "id": 3,
+      "id": 22,
       "title": "Help Clients Turn Health Benefits Into a Talent Attraction Tool",
-      "summary": "Iamagazine.comから届いたニュースです。仕事や副業に活かせるAIのビジネスニュースです。「Help Clients Turn Health Benefits Into a Talent Attraction Tool」が話題になっており、As healthcare costs continue to rise making changes to health benefit packages can ensure … くわしくは元記事から確認できます。",
+      "summary": "医療費が上昇し続ける中、医療給付パッケージを変更することで、雇用主は手頃な価格の医療へのアクセスだけでなく、管理の容易さも提供し続けることができます。",
       "source": "Iamagazine.com",
       "url": "http://www.iamagazine.com/2026/06/29/help-clients-turn-health-benefits-into-a-talent-attraction-tool/",
       "date": "2026-06-29",
@@ -33,9 +223,9 @@
       "level": "非エンジニアOK"
     },
     {
-      "id": 4,
+      "id": 23,
       "title": "From the Fed to chip stocks: Key events that will drive global markets this week",
-      "summary": "Economictimes.comから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「From the Fed to chip stocks: Key events that will drive global markets this week」が話題になっており、Global markets are entering a critical phase, with central bank decisions now taking cente… くわしくは元記事から確認できます。",
+      "summary": "世界市場は重要な局面を迎えており、不安定な前半を経て現在は中央銀行の決定が注目を集めている。",
       "source": "Economictimes.com",
       "url": "https://m.economictimes.com/markets/us-stocks/news/from-the-fed-to-chip-stocks-key-events-that-will-drive-global-markets-this-week/markets-enter-a-crucial-phase/slideshow/132063865.cms",
       "date": "2026-06-29",
@@ -43,9 +233,9 @@
       "level": "どっちでも"
     },
     {
-      "id": 5,
+      "id": 24,
       "title": "Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead",
-      "summary": "BusinessLineから届いたニュースです。仕事や副業に活かせるAIのビジネスニュースです。「Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead」が話題になっており、Jensen Huang has acknowledged that the US has lost its edge in China's advanced AI chips m… くわしくは元記事から確認できます。",
+      "summary": "ジェンスン・ファン氏は、中国の競合他社が「巨人」になったため、米国は中国の先進的なAIチップ市場での優位性を失ったと認めた。",
       "source": "BusinessLine",
       "url": "https://www.thehindubusinessline.com/info-tech/nvidias-ai-chip-sales-in-china-stall-as-local-chipmakers-like-huawei-take-the-lead/article71160087.ece",
       "date": "2026-06-29",
@@ -53,204 +243,14 @@
       "level": "どっちでも"
     },
     {
-      "id": 6,
+      "id": 25,
       "title": "Banks to retire high-cost funds with diaspora money, says Axis Bank chief",
-      "summary": "Bloombergから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「Banks to retire high-cost funds with diaspora money, says Axis Bank chief」が話題になっており、Infrastructure projects, data centres, real estate and large capital expenditure plans als… くわしくは元記事から確認できます。",
+      "summary": "同氏は、インフラストラクチャープロジェクト、データセンター、不動産、大規模な資本支出計画も投資手段に含まれると述べた。",
       "source": "Bloomberg",
       "url": "https://www.bloomberg.com/news/articles/2026-06-29/axis-ceo-sees-banks-retiring-high-cost-funds-with-diaspora-money",
       "date": "2026-06-29",
       "category": "社会・倫理",
       "level": "どっちでも"
-    },
-    {
-      "id": 7,
-      "title": "Singapore Airlines gender diversity progress",
-      "summary": "The Straits Timesから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「Singapore AIrlines gender diversity progress」が話題になっており、Explore Singapore Airlines' progress on gender diversity targets, including increases in f… くわしくは元記事から確認できます。",
-      "source": "The Straits Times",
-      "url": "https://www.straitstimes.com/business/companies-markets/singapore-airlines-increased-number-of-female-pilots-by-25-over-past-five-years",
-      "date": "2026-06-29",
-      "category": "社会・倫理",
-      "level": "どっちでも"
-    },
-    {
-      "id": 8,
-      "title": "China's Momenta kicks off Hong Kong IPO, targets up to $751 million",
-      "summary": "The Times of Indiaから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「China's Momenta kicks off Hong Kong IPO, targets up to $751 million」が話題になっており、The IPO comes as Chinese technology ​firms are returning to public markets, helped by inve… くわしくは元記事から確認できます。",
-      "source": "The Times of India",
-      "url": "https://economictimes.indiatimes.com/tech/technology/chinas-momenta-kicks-off-hong-kong-ipo-targets-up-to-751-million/articleshow/132063228.cms",
-      "date": "2026-06-29",
-      "category": "社会・倫理",
-      "level": "どっちでも"
-    },
-    {
-      "id": 9,
-      "title": "A Decade of Driving Innovation: STARTUP AUTOBAHN powered by Plug and Play Celebrates 10th Anniversary at Expo 2026",
-      "summary": "PRNewswireから届いたニュースです。仕事や副業に活かせるAIのビジネスニュースです。「A Decade of Driving Innovation: STARTUP AUTOBAHN powered by Plug and Play Celebrates 10th Anniversary at Expo 2026」が話題になっており、STUTTGART, Germany, June 29, 2026 /PRNewswire/ -- STARTUP AUTOBAHN powered by Plug and Pla… くわしくは元記事から確認できます。",
-      "source": "PRNewswire",
-      "url": "https://www.prnewswire.com/news-releases/a-decade-of-driving-innovation-startup-autobahn-powered-by-plug-and-play-celebrates-10th-anniversary-at-expo-2026-302812051.html",
-      "date": "2026-06-29",
-      "category": "AIで稼ぐ・ビジネス",
-      "level": "どっちでも"
-    },
-    {
-      "id": 10,
-      "title": "How accurate are AI chatbots when we ask them a medical question?",
-      "summary": "The Irish Timesから届いたニュースです。日常生活や仕事ですぐ試せるAIの話題です。「How accurate are AI chatbots when we ask them a medical question?」が話題になっており、Dr Muiris Houston: A fifth of answers from ChatGPT, Gemini, Grok, Meta AI and DeepSeek in … くわしくは元記事から確認できます。",
-      "source": "The Irish Times",
-      "url": "https://www.irishtimes.com/health/your-wellness/2026/06/29/how-accurate-are-ai-chatbots-when-we-ask-them-a-medical-question/",
-      "date": "2026-06-29",
-      "category": "日常で使えるAI",
-      "level": "非エンジニアOK"
-    },
-    {
-      "id": 11,
-      "title": "WISeKey International Holding Ltd Signs Merger Agreement to Redomicile to the British Virgin Islands",
-      "summary": "GlobeNewswireから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「WISeKey International Holding Ltd Signs Merger Agreement to Redomicile to the British Virgin Islands」が話題になっており、WISeKey International Holding Ltd Signs Merger Agreement to Redomicile to the British Virg… くわしくは元記事から確認できます。",
-      "source": "GlobeNewswire",
-      "url": "https://www.globenewswire.com/news-release/2026/06/29/3318644/0/en/WISeKey-International-Holding-Ltd-Signs-Merger-Agreement-to-Redomicile-to-the-British-Virgin-Islands.html",
-      "date": "2026-06-29",
-      "category": "社会・倫理",
-      "level": "どっちでも"
-    },
-    {
-      "id": 12,
-      "title": "Building AI-Driven Feature Flag Optimization Systems in ASP.NET Core",
-      "summary": "C-sharpcorner.comから届いたニュースです。画像・文章・動画など、創作に使えるAIの話題です。「Building AI-Driven Feature Flag Optimization Systems in ASP.NET Core」が話題になっており、Build AI-driven feature flag optimization in ASP.NET Core using Azure services for smarter… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/building-ai-driven-feature-flag-optimization-systems-in-asp-net-core/",
-      "date": "2026-06-29",
-      "category": "創作・クリエイティブ",
-      "level": "どっちでも"
-    },
-    {
-      "id": 13,
-      "title": "Building AI-Powered API Contract Validation Systems in ASP.NET Core",
-      "summary": "C-sharpcorner.comから届いたニュースです。新モデルや技術アップデートなど、開発者向けの話題です。「Building AI-Powered API Contract Validation Systems in ASP.NET Core」が話題になっており、Build AI-powered API contract validation in ASP.NET Core. Proactively detect breaking chan… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-api-contract-validation-systems-in-asp-net-core/",
-      "date": "2026-06-29",
-      "category": "エンジニア向け",
-      "level": "エンジニア向け"
-    },
-    {
-      "id": 14,
-      "title": "AI-Assisted Kubernetes Troubleshooting for .NET Applications",
-      "summary": "C-sharpcorner.comから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「AI-Assisted Kubernetes Troubleshooting for .NET Applications」が話題になっており、Streamline Kubernetes troubleshooting for .NET apps with AI. Reduce MTTR by analyzing logs… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/ai-assisted-kubernetes-troubleshooting-for-net-applications/",
-      "date": "2026-06-29",
-      "category": "社会・倫理",
-      "level": "非エンジニアOK"
-    },
-    {
-      "id": 15,
-      "title": "Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead",
-      "summary": "seattlepi.comから届いたニュースです。仕事や副業に活かせるAIのビジネスニュースです。「Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead」が話題になっており、In the race between the U.S. and China to develop artificial intelligence, the battle over… くわしくは元記事から確認できます。",
-      "source": "seattlepi.com",
-      "url": "https://www.seattlepi.com/news/world/article/nvidia-s-ai-chip-sales-in-china-stall-as-local-22324645.php",
-      "date": "2026-06-29",
-      "category": "AIで稼ぐ・ビジネス",
-      "level": "どっちでも"
-    },
-    {
-      "id": 16,
-      "title": "Building AI-Powered Technical Debt Prioritization Systems with .NET",
-      "summary": "C-sharpcorner.comから届いたニュースです。新モデルや技術アップデートなど、開発者向けの話題です。「Building AI-Powered Technical Debt Prioritization Systems with .NET」が話題になっており、Build AI-powered technical debt prioritization systems with .NET, Azure OpenAI, and GitHub… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-technical-debt-prioritization-systems-with-net/",
-      "date": "2026-06-29",
-      "category": "エンジニア向け",
-      "level": "エンジニア向け"
-    },
-    {
-      "id": 17,
-      "title": "Implementing AI-Based Secret Detection and Remediation in .NET Repositories",
-      "summary": "C-sharpcorner.comから届いたニュースです。新モデルや技術アップデートなど、開発者向けの話題です。「Implementing AI-Based Secret Detection and Remediation in .NET Repositories」が話題になっており、Secure .NET repos with AI secret detection. Prevent leaks, automate remediation, and enhan… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/implementing-ai-based-secret-detection-and-remediation-in-net-repositories/",
-      "date": "2026-06-29",
-      "category": "エンジニア向け",
-      "level": "エンジニア向け"
-    },
-    {
-      "id": 18,
-      "title": "Building AI-Powered Incident Postmortem Generators with ASP.NET Core",
-      "summary": "C-sharpcorner.comから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「Building AI-Powered Incident Postmortem Generators with ASP.NET Core」が話題になっており、Build AI-powered incident postmortem generators with ASP.NET Core, OpenTelemetry, and Azur… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-incident-postmortem-generators-with-asp-net-core/",
-      "date": "2026-06-29",
-      "category": "社会・倫理",
-      "level": "どっちでも"
-    },
-    {
-      "id": 19,
-      "title": "AI-Assisted API Dependency Mapping for Large Microservice Architectures",
-      "summary": "C-sharpcorner.comから届いたニュースです。新モデルや技術アップデートなど、開発者向けの話題です。「AI-Assisted API Dependency Mapping for Large Microservice Architectures」が話題になっており、Unlock microservice visibility with AI-assisted API dependency mapping. Automate discovery… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/ai-assisted-api-dependency-mapping-for-large-microservice-architectures/",
-      "date": "2026-06-29",
-      "category": "エンジニア向け",
-      "level": "エンジニア向け"
-    },
-    {
-      "id": 20,
-      "title": "Building Intelligent Code Ownership Discovery Systems Using AI",
-      "summary": "C-sharpcorner.comから届いたニュースです。新モデルや技術アップデートなど、開発者向けの話題です。「Building Intelligent Code Ownership Discovery Systems Using AI」が話題になっており、Build intelligent code ownership discovery systems using AI, .NET, and GitHub APIs for fas… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/building-intelligent-code-ownership-discovery-systems-using-ai/",
-      "date": "2026-06-29",
-      "category": "エンジニア向け",
-      "level": "エンジニア向け"
-    },
-    {
-      "id": 21,
-      "title": "Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead",
-      "summary": "The Times of Indiaから届いたニュースです。仕事や副業に活かせるAIのビジネスニュースです。「Nvidia's AI chip sales in China stall, as local chipmakers like Huawei take the lead」が話題になっており、Jensen Huang, the CEO of computer chip giant Nvidia, was mobbed by onlookers as he hit the… くわしくは元記事から確認できます。",
-      "source": "The Times of India",
-      "url": "https://economictimes.indiatimes.com/tech/technology/nvidias-ai-chip-sales-in-china-stall-as-local-chipmakers-like-huawei-take-the-lead/articleshow/132063107.cms",
-      "date": "2026-06-29",
-      "category": "AIで稼ぐ・ビジネス",
-      "level": "どっちでも"
-    },
-    {
-      "id": 22,
-      "title": "Prediction: This Artificial Intelligence (AI) Semiconductor Stock Will Join the $1 Trillion Club by 2028",
-      "summary": "Biztoc.comから届いたニュースです。画像・文章・動画など、創作に使えるAIの話題です。「Prediction: This 人工知能 (AI) Semiconductor Stock Will Join the $1 Trillion Club by 2028」が話題になっており、Prediction: This Artificial Intelligence (AI) Semiconductor Stock Will Join the $1 Trillio… くわしくは元記事から確認できます。",
-      "source": "Biztoc.com",
-      "url": "https://biztoc.com/x/bce3175f4d97e9b9",
-      "date": "2026-06-29",
-      "category": "創作・クリエイティブ",
-      "level": "どっちでも"
-    },
-    {
-      "id": 23,
-      "title": "Turing Award Laureate Joseph Sifakis Appointed Chief Scientific Advisor as CaoCao Accelerates AI Transformation",
-      "summary": "GlobeNewswireから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「Turing Award Laureate Joseph Sifakis Appointed Chief Scientific Advisor as CaoCao Accelerates AI Transformation」が話題になっており、AI scientist Joseph Sifakiswas was formally invited to serve as Chief Scientific Advisor o… くわしくは元記事から確認できます。",
-      "source": "GlobeNewswire",
-      "url": "https://www.globenewswire.com/news-release/2026/06/29/3318638/0/en/Turing-Award-Laureate-Joseph-Sifakis-Appointed-Chief-Scientific-Advisor-as-CaoCao-Accelerates-AI-Transformation.html",
-      "date": "2026-06-29",
-      "category": "社会・倫理",
-      "level": "非エンジニアOK"
-    },
-    {
-      "id": 24,
-      "title": "How to Implement AI-Driven Root Cause Detection in ASP.NET Core Applications",
-      "summary": "C-sharpcorner.comから届いたニュースです。AIと社会・仕事・法律の関係についてのニュースです。「How to Implement AI-Driven Root Cause Detection in ASP.NET Core Applications」が話題になっており、Implement AI-driven root cause detection in ASP.NET Core apps with OpenTelemetry, Azure Op… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/how-to-implement-ai-driven-root-cause-detection-in-asp-net-core-applications/",
-      "date": "2026-06-29",
-      "category": "社会・倫理",
-      "level": "非エンジニアOK"
-    },
-    {
-      "id": 25,
-      "title": "Building AI-Powered Pull Request Summarization Systems with .NET",
-      "summary": "C-sharpcorner.comから届いたニュースです。新モデルや技術アップデートなど、開発者向けの話題です。「Building AI-Powered Pull Request Summarization Systems with .NET」が話題になっており、Build AI-powered pull request summarization with .NET, GitHub APIs, and Azure OpenAI for f… くわしくは元記事から確認できます。",
-      "source": "C-sharpcorner.com",
-      "url": "https://www.c-sharpcorner.com/article/building-ai-powered-pull-request-summarization-systems-with-net/",
-      "date": "2026-06-29",
-      "category": "エンジニア向け",
-      "level": "エンジニア向け"
     }
   ]
 }
