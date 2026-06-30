@@ -23,6 +23,23 @@ world-ai-news-app/
 └── README.md
 ```
 
+## 公開URL（GitHub Pages）
+
+**https://kikurin-tasogare.github.io/world-ai-news-app/**
+
+> 初回のみ、リポジトリの Settings → Pages で有効化が必要です（下記参照）。
+
+## GitHub Pages の有効化（初回1回）
+
+リポジトリが **Private** の場合、無料プランでは Pages が使えません。先に **Public** に変更してください。
+
+1. [Settings → General](https://github.com/kikurin-tasogare/world-ai-news-app/settings) → **Change repository visibility** → **Public**
+2. [Settings → Pages](https://github.com/kikurin-tasogare/world-ai-news-app/settings/pages) を開く
+3. **Build and deployment** で次のどちらかを選ぶ：
+   - **GitHub Actions**（推奨）— `main` への push で自動デプロイ
+   - **Deploy from a branch** → Branch: `gh-pages` / Folder: `/ (root)`
+4. 1〜2分待つと上記URLで公開されます
+
 ## 使い方
 
 ### 1. ローカルで開く
