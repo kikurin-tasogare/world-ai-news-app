@@ -3,7 +3,7 @@
  * サンプルJSONからニュースを読み込み、カテゴリ・レベルでフィルター表示
  */
 
-const DATA_URL = 'data/sample-news.json';
+const DATA_URL = './data/sample-news.json';
 
 const CATEGORIES = [
   'すべて',
