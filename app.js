@@ -254,30 +254,8 @@ function registerServiceWorker() {
   });
 }
 
-function setupInstallHint() {
-  const hint = document.getElementById('install-hint');
-  const closeBtn = document.getElementById('install-hint-close');
-  if (!hint || !closeBtn) return;
-
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const isStandalone =
-    window.matchMedia('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true;
-  const dismissed = localStorage.getItem('install-hint-dismissed') === '1';
-
-  if (isIOS && !isStandalone && !dismissed) {
-    hint.hidden = false;
-  }
-
-  closeBtn.addEventListener('click', () => {
-    hint.hidden = true;
-    localStorage.setItem('install-hint-dismissed', '1');
-  });
-}
-
 function init() {
   registerServiceWorker();
-  setupInstallHint();
   loadNews({ showLoading: false });
 }
 
