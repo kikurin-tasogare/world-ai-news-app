@@ -85,14 +85,12 @@ const TERM_JA = {
   'generative AI': '生成AI',
 };
 
-const CATEGORY_INTROS = {
-  '日常で使えるAI': '日常生活や仕事ですぐ試せるAIの話題です。',
-  'AIで稼ぐ・ビジネス': '仕事や副業に活かせるAIのビジネスニュースです。',
-  'セキュリティ': 'AIを悪用した犯罪や安全対策の話題です。知っておくと安心です。',
-  '創作・クリエイティブ': '画像・文章・動画など、創作に使えるAIの話題です。',
-  '社会・倫理': 'AIと社会・仕事・法律の関係についてのニュースです。',
-  'エンジニア向け': '新モデルや技術アップデートなど、開発者向けの話題です。',
-};
+const SUMMARY_MAX_LENGTH = 100;
+const TRANSLATE_DELAY_MS = 250;
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function cleanText(text) {
   if (!text) return '';
@@ -140,18 +138,96 @@ function detectLevel(article, category) {
   return 'どっちでも';
 }
 
-function buildJapaneseSummary(article, category) {
-  const source = article.source?.name || '海外メディア';
-  const intro = CATEGORY_INTROS[category] || 'AI関連の最新ニュースです。';
-  const titleJa = localizeTitle(cleanText(article.title));
-  const desc = cleanText(article.description);
+function extractArticleCore(article) {
+  const title = cleanText(article.title);
+  let desc = cleanText(article.description || '');
 
-  if (desc.length >= 40) {
-    const excerpt = desc.length > 90 ? `${desc.slice(0, 90)}…` : desc;
-    return `${source}から届いたニュースです。${intro}「${titleJa}」が話題になっており、${excerpt} くわしくは元記事から確認できます。`;
+  desc = desc
+    .replace(/[\w\s,.-]+,\s+[A-Za-z]+\s+\d{1,2},\s+\d{4}\s+\/PRNewswire\/\s*—\s*/gi, '')
+    .replace(/\/PRNewswire\/\s*—\s*/gi, '')
+    .replace(/\bRead more\.?\b/gi, '')
+    .replace(/https?:\/\/\S+/g, '')
+    .replace(/[a-z0-9-]+\.(com|net|org|io)\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const sentences = desc
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence.length >= 30);
+
+  if (sentences.length > 0) {
+    return sentences[0];
   }
 
-  return `${source}から届いたニュースです。${intro}「${titleJa}」について報じられています。気になったら元記事をタップしてみてください。`;
+  if (desc.length >= 30) {
+    return desc;
+  }
+
+  return title;
+}
+
+async function translateToJapanese(text) {
+  const input = text.slice(0, 450);
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ja&dt=t&q=${encodeURIComponent(input)}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Translation failed (${response.status})`);
+  }
+
+  const data = await response.json();
+  const translated = (data[0] || [])
+    .map((part) => part[0])
+    .join('')
+    .trim();
+
+  if (!translated) {
+    throw new Error('Empty translation');
+  }
+
+  return translated;
+}
+
+function trimSummary(text, maxLen = SUMMARY_MAX_LENGTH) {
+  let summary = text.replace(/\s+/g, '').trim();
+  summary = summary.replace(/[。！？!?]+$/g, '');
+
+  if (summary.length <= maxLen) {
+    return `${summary}。`;
+  }
+
+  let cut = summary.slice(0, maxLen);
+  const pause = Math.max(
+    cut.lastIndexOf('。'),
+    cut.lastIndexOf('、'),
+    cut.lastIndexOf('，')
+  );
+
+  if (pause >= maxLen * 0.55) {
+    cut = cut.slice(0, pause);
+  } else {
+    cut = cut.slice(0, maxLen - 1);
+  }
+
+  return `${cut}…`;
+}
+
+function buildFallbackSummary(article) {
+  const titleJa = localizeTitle(cleanText(article.title));
+  return trimSummary(titleJa, SUMMARY_MAX_LENGTH);
+}
+
+async function buildJapaneseSummary(article) {
+  const core = extractArticleCore(article);
+
+  try {
+    const translated = await translateToJapanese(core);
+    return trimSummary(translated, SUMMARY_MAX_LENGTH);
+  } catch (err) {
+    console.warn(`Translation fallback for: ${article.title?.slice(0, 40)} (${err.message})`);
+    return buildFallbackSummary(article);
+  }
 }
 
 function toDateString(isoDate) {
@@ -186,10 +262,10 @@ async function fetchArticles(apiKey) {
   return articles;
 }
 
-function normalizeArticles(rawArticles) {
+async function normalizeArticles(rawArticles) {
   const seen = new Set();
 
-  return rawArticles
+  const selected = rawArticles
     .filter((article) => article.title && article.title !== '[Removed]' && article.url)
     .filter((article) => {
       if (seen.has(article.url)) return false;
@@ -197,22 +273,32 @@ function normalizeArticles(rawArticles) {
       return true;
     })
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-    .slice(0, MAX_ARTICLES)
-    .map((article, index) => {
-      const category = detectCategory(article);
-      const level = detectLevel(article, category);
+    .slice(0, MAX_ARTICLES);
 
-      return {
-        id: index + 1,
-        title: cleanText(article.title),
-        summary: buildJapaneseSummary(article, category),
-        source: article.source?.name || 'News',
-        url: article.url,
-        date: toDateString(article.publishedAt || new Date().toISOString()),
-        category,
-        level,
-      };
+  const articles = [];
+
+  for (const [index, article] of selected.entries()) {
+    const category = detectCategory(article);
+    const level = detectLevel(article, category);
+    const summary = await buildJapaneseSummary(article);
+
+    articles.push({
+      id: index + 1,
+      title: cleanText(article.title),
+      summary,
+      source: article.source?.name || 'News',
+      url: article.url,
+      date: toDateString(article.publishedAt || new Date().toISOString()),
+      category,
+      level,
     });
+
+    if (index < selected.length - 1) {
+      await sleep(TRANSLATE_DELAY_MS);
+    }
+  }
+
+  return articles;
 }
 
 async function main() {
@@ -224,7 +310,8 @@ async function main() {
 
   console.log('Fetching AI news from News API...');
   const rawArticles = await fetchArticles(API_KEY);
-  const articles = normalizeArticles(rawArticles);
+  console.log('Generating Japanese summaries...');
+  const articles = await normalizeArticles(rawArticles);
 
   if (articles.length === 0) {
     throw new Error('取得できた記事が0件でした。');
