@@ -6,7 +6,7 @@ const STORAGE_KEY = 'futari-list:v1';
 
 const MEMBERS = [
   { id: 'yuya', label: '佑哉', emoji: '🙋‍♂️' },
-  { id: 'yuki', label: '祐希', emoji: '🙋‍♀️' },
+  { id: 'yuki', label: '祐希', emoji: '🙋‍♀️' },
   { id: 'both', label: 'ふたり', emoji: '💕' },
 ];
 
