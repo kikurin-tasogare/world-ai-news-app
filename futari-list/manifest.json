@@ -1,0 +1,19 @@
+{
+  "name": "ふたりリスト",
+  "short_name": "ふたりリスト",
+  "description": "佑哉さんと祐希ちゃんの、行きたい・やりたいリスト",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1a1412",
+  "theme_color": "#1a1412",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
