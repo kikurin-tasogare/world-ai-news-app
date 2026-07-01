@@ -1,14 +1,16 @@
 /**
- * ふたりリスト — 行きたい・やりたいを、今は一人でも、将来ふたりで
+ * ふたりリスト — プライバシー優先（名前は端末内のみ）
  */
 
-const STORAGE_KEY = 'futari-list:v1';
+const STORAGE_KEY = 'futari-list:v2';
 
 const MEMBERS = [
-  { id: 'yuya', label: '佑哉', emoji: '🙋‍♂️' },
-  { id: 'yuki', label: '祐希', emoji: '🙋‍♀️' },
+  { id: 'member_a', label: '自分', emoji: '🙋' },
+  { id: 'member_b', label: '相手', emoji: '🙋' },
   { id: 'both', label: 'ふたり', emoji: '💕' },
 ];
+
+const LEGACY_MEMBER_IDS = { yuya: 'member_a', yuki: 'member_b' };
 
 const TYPES = [
   { id: 'all', label: 'すべて' },
@@ -55,6 +57,9 @@ const els = {
   itemPinned: document.getElementById('item-pinned'),
   itemDelete: document.getElementById('item-delete'),
   memberPicker: document.getElementById('member-picker'),
+  labelMemberA: document.getElementById('label-member-a'),
+  labelMemberB: document.getElementById('label-member-b'),
+  saveLabels: document.getElementById('save-labels'),
   inviteCode: document.getElementById('invite-code'),
   copyInvite: document.getElementById('copy-invite'),
   joinCode: document.getElementById('join-code'),
@@ -79,7 +84,8 @@ function defaultState() {
       name: 'ふたりリスト',
     },
     settings: {
-      currentMember: 'yuya',
+      currentMember: 'member_a',
+      memberLabels: {},
       supabaseUrl: '',
       supabaseAnonKey: '',
     },
@@ -99,12 +105,25 @@ function loadState() {
 
 function migrateState(data) {
   const base = defaultState();
+  const settings = { ...base.settings, ...data.settings };
+  settings.memberLabels = settings.memberLabels || {};
+
+  if (LEGACY_MEMBER_IDS[settings.currentMember]) {
+    settings.currentMember = LEGACY_MEMBER_IDS[settings.currentMember];
+  }
+
+  const items = (Array.isArray(data.items) ? data.items : []).map((item) => ({
+    ...item,
+    createdBy: LEGACY_MEMBER_IDS[item.createdBy] || item.createdBy,
+    updatedBy: LEGACY_MEMBER_IDS[item.updatedBy] || item.updatedBy,
+  }));
+
   return {
     ...base,
     ...data,
     workspace: { ...base.workspace, ...data.workspace },
-    settings: { ...base.settings, ...data.settings },
-    items: Array.isArray(data.items) ? data.items : [],
+    settings,
+    items,
   };
 }
 
@@ -117,11 +136,13 @@ function generateInviteCode() {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let code = '';
   for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
-  return `YUKI-${code}`;
+  return `FLST-${code}`;
 }
 
 function memberLabel(id) {
-  return MEMBERS.find((m) => m.id === id) || MEMBERS[0];
+  const member = MEMBERS.find((m) => m.id === id) || MEMBERS[0];
+  const custom = state.settings.memberLabels?.[member.id];
+  return custom ? { ...member, label: custom } : member;
 }
 
 function createItem(data) {
@@ -176,7 +197,10 @@ function exportData() {
   const payload = {
     exportedAt: new Date().toISOString(),
     workspace: state.workspace,
-    settings: { currentMember: state.settings.currentMember },
+    settings: {
+      currentMember: state.settings.currentMember,
+      memberLabels: state.settings.memberLabels,
+    },
     items: state.items,
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -209,6 +233,14 @@ function importData(file, merge) {
         state.items = data.items;
         if (data.workspace) state.workspace = { ...state.workspace, ...data.workspace };
         if (data.settings?.currentMember) state.settings.currentMember = data.settings.currentMember;
+        if (data.settings?.memberLabels) state.settings.memberLabels = data.settings.memberLabels;
+      }
+
+      if (data.settings?.memberLabels) {
+        state.settings.memberLabels = {
+          ...state.settings.memberLabels,
+          ...data.settings.memberLabels,
+        };
       }
 
       if (data.workspace?.inviteCode) {
@@ -390,9 +422,10 @@ function renderFilterButtons(container, options, active, onSelect) {
 }
 
 function renderMemberPicker() {
-  els.memberPicker.innerHTML = MEMBERS.map((m) =>
-    `<button type="button" class="member-btn${state.settings.currentMember === m.id ? ' member-btn--active' : ''}" data-id="${m.id}">${m.emoji} ${m.label}</button>`
-  ).join('');
+  els.memberPicker.innerHTML = MEMBERS.filter((m) => m.id !== 'both').map((m) => {
+    const label = memberLabel(m.id);
+    return `<button type="button" class="member-btn${state.settings.currentMember === m.id ? ' member-btn--active' : ''}" data-id="${m.id}">${label.emoji} ${escapeHtml(label.label)}</button>`;
+  }).join('');
 
   els.memberPicker.querySelectorAll('.member-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -403,6 +436,24 @@ function renderMemberPicker() {
       renderList();
     });
   });
+
+  if (els.labelMemberA) {
+    els.labelMemberA.value = state.settings.memberLabels?.member_a || '';
+    els.labelMemberB.value = state.settings.memberLabels?.member_b || '';
+  }
+}
+
+function saveMemberLabels() {
+  const a = els.labelMemberA?.value.trim() || '';
+  const b = els.labelMemberB?.value.trim() || '';
+  state.settings.memberLabels = {};
+  if (a) state.settings.memberLabels.member_a = a;
+  if (b) state.settings.memberLabels.member_b = b;
+  saveState();
+  renderMemberPicker();
+  renderHeader();
+  renderList();
+  toast('表示名を保存しました（端末内のみ）');
 }
 
 function renderTypeToggle(selected) {
@@ -630,6 +681,8 @@ els.saveSync.addEventListener('click', () => {
 });
 
 els.syncNow.addEventListener('click', () => syncToCloud());
+
+els.saveLabels?.addEventListener('click', saveMemberLabels);
 
 renderFilterButtons(els.typeFilters, TYPES, activeType, onTypeSelect);
 renderFilterButtons(els.statusFilters, STATUSES, activeStatus, onStatusSelect);

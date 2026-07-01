@@ -318,6 +318,29 @@ body {
 .sync-status--ok { color: var(--success); }
 .sync-status--err { color: var(--danger); }
 
+.privacy-list {
+  list-style: none;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.privacy-list li {
+  padding: 0.35rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.privacy-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--success);
+}
+
+.share-card--privacy {
+  border-color: rgba(124, 184, 160, 0.35);
+}
+
 /* Form fields */
 .field { display: block; margin-bottom: 0.85rem; }
 

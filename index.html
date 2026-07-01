@@ -53,9 +53,23 @@
     <!-- 共有画面 -->
     <section id="view-share" class="view" hidden>
       <div class="share-card">
-        <h2 class="share-card__title">👤 あなたの名前</h2>
-        <p class="share-card__desc">追加したメモに表示されます。祐希ちゃんが参加したら各自選んでね。</p>
+        <h2 class="share-card__title">👤 あなたはどちら？</h2>
+        <p class="share-card__desc">メモの投稿者として記録されます。パートナーが参加したら各自選んでね。</p>
         <div class="member-picker" id="member-picker" role="group" aria-label="メンバー選択"></div>
+      </div>
+
+      <div class="share-card">
+        <h2 class="share-card__title">✏️ 表示名（端末内のみ）</h2>
+        <p class="share-card__desc">本名は GitHub に載りません。ここで設定した名前はこの端末（とエクスポートファイル）にだけ保存されます。</p>
+        <label class="field">
+          <span class="field__label">自分の表示名（任意）</span>
+          <input type="text" class="field__input" id="label-member-a" maxlength="20" placeholder="例: 自分" autocomplete="off">
+        </label>
+        <label class="field">
+          <span class="field__label">相手の表示名（任意）</span>
+          <input type="text" class="field__input" id="label-member-b" maxlength="20" placeholder="例: 相手" autocomplete="off">
+        </label>
+        <button type="button" class="btn btn--ghost" id="save-labels">表示名を保存</button>
       </div>
 
       <div class="share-card">
@@ -69,7 +83,7 @@
         <label class="field">
           <span class="field__label">別のワークスペースに参加</span>
           <div class="field__row">
-            <input type="text" class="field__input" id="join-code" placeholder="例: YUKI-4X2K" autocomplete="off">
+            <input type="text" class="field__input" id="join-code" placeholder="例: FLST-4X2K" autocomplete="off">
             <button type="button" class="btn btn--ghost" id="join-workspace">参加</button>
           </div>
         </label>
@@ -77,7 +91,7 @@
 
       <div class="share-card">
         <h2 class="share-card__title">📤 今すぐ共有（ファイル）</h2>
-        <p class="share-card__desc">クラウド設定前でも、JSONの送受信で祐希ちゃんとリストを共有できます。</p>
+        <p class="share-card__desc">クラウド設定前でも、JSON の送受信でパートナーとリストを共有できます。</p>
         <div class="share-actions">
           <button type="button" class="btn btn--ghost" id="export-json">エクスポート</button>
           <label class="btn btn--ghost">
@@ -107,6 +121,17 @@
           <button type="button" class="btn btn--ghost" id="sync-now">今すぐ同期</button>
         </div>
         <p class="sync-status" id="sync-status" aria-live="polite"></p>
+      </div>
+
+      <div class="share-card share-card--privacy">
+        <h2 class="share-card__title">🔒 プライバシー</h2>
+        <ul class="privacy-list">
+          <li>メモは端末内（localStorage）に保存</li>
+          <li>GitHub のコードに本名は含まれない</li>
+          <li>表示名は端末内のみ（任意設定）</li>
+          <li>エクスポートは自分で実行したときだけ</li>
+          <li>クラウド同期は Supabase を自分で設定した場合のみ</li>
+        </ul>
       </div>
     </section>
   </main>

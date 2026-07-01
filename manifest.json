@@ -1,7 +1,7 @@
 {
   "name": "ふたりリスト",
   "short_name": "ふたりリスト",
-  "description": "佑哉さんと祐希ちゃんの、行きたい・やりたいリスト",
+  "description": "二人の行きたい・やりたいリスト PWA",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
