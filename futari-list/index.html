@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="行きたいところ・やりたいことを、ふたりで共有できるリスト">
+  <meta name="theme-color" content="#1a1412">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ふたりリスト">
+  <title>💕 ふたりリスト</title>
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="header__title">💕 ふたりリスト</h1>
+      <p class="header__subtitle" id="header-subtitle">行きたい・やりたいを、のこしておこう</p>
+    </div>
+    <nav class="header__nav" aria-label="メイン">
+      <button type="button" class="nav-btn nav-btn--active" data-view="list">リスト</button>
+      <button type="button" class="nav-btn" data-view="share">共有</button>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- リスト画面 -->
+    <section id="view-list" class="view view--active">
+      <div class="filters">
+        <div class="filters__group">
+          <h2 class="filters__label">種類</h2>
+          <div class="filters__buttons" id="type-filters" role="group"></div>
+        </div>
+        <div class="filters__group">
+          <h2 class="filters__label">ステータス</h2>
+          <div class="filters__buttons" id="status-filters" role="group"></div>
+        </div>
+      </div>
+
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+
+      <section class="item-list" id="item-list" aria-label="リスト一覧"></section>
+
+      <p class="empty-state" id="empty-state" hidden>
+        まだメモがありません。右下の＋から追加してみて。
+      </p>
+    </section>
+
+    <!-- 共有画面 -->
+    <section id="view-share" class="view" hidden>
+      <div class="share-card">
+        <h2 class="share-card__title">👤 あなたの名前</h2>
+        <p class="share-card__desc">追加したメモに表示されます。祐希ちゃんが参加したら各自選んでね。</p>
+        <div class="member-picker" id="member-picker" role="group" aria-label="メンバー選択"></div>
+      </div>
+
+      <div class="share-card">
+        <h2 class="share-card__title">🔗 ワークスペース</h2>
+        <p class="share-card__desc">同じコードを入力すると、ふたりのリストが同期できます（クラウド設定後）。</p>
+        <div class="invite-code">
+          <span class="invite-code__label">招待コード</span>
+          <code class="invite-code__value" id="invite-code">------</code>
+          <button type="button" class="btn btn--ghost btn--small" id="copy-invite">コピー</button>
+        </div>
+        <label class="field">
+          <span class="field__label">別のワークスペースに参加</span>
+          <div class="field__row">
+            <input type="text" class="field__input" id="join-code" placeholder="例: YUKI-4X2K" autocomplete="off">
+            <button type="button" class="btn btn--ghost" id="join-workspace">参加</button>
+          </div>
+        </label>
+      </div>
+
+      <div class="share-card">
+        <h2 class="share-card__title">📤 今すぐ共有（ファイル）</h2>
+        <p class="share-card__desc">クラウド設定前でも、JSONの送受信で祐希ちゃんとリストを共有できます。</p>
+        <div class="share-actions">
+          <button type="button" class="btn btn--ghost" id="export-json">エクスポート</button>
+          <label class="btn btn--ghost">
+            インポート
+            <input type="file" id="import-json" accept="application/json,.json" hidden>
+          </label>
+        </div>
+        <label class="field field--checkbox">
+          <input type="checkbox" id="import-merge" checked>
+          <span>既存のメモとマージする（オフで上書き）</span>
+        </label>
+      </div>
+
+      <div class="share-card">
+        <h2 class="share-card__title">☁️ クラウド同期（任意）</h2>
+        <p class="share-card__desc">Supabase を設定すると、リアルタイムでふたりのリストが更新されます。</p>
+        <label class="field">
+          <span class="field__label">Supabase URL</span>
+          <input type="url" class="field__input" id="supabase-url" placeholder="https://xxxx.supabase.co">
+        </label>
+        <label class="field">
+          <span class="field__label">Anon Key</span>
+          <input type="password" class="field__input" id="supabase-key" placeholder="eyJ...">
+        </label>
+        <div class="share-actions">
+          <button type="button" class="btn btn--primary" id="save-sync">保存して同期</button>
+          <button type="button" class="btn btn--ghost" id="sync-now">今すぐ同期</button>
+        </div>
+        <p class="sync-status" id="sync-status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <button type="button" class="fab" id="fab-add" aria-label="新しいメモを追加">＋</button>
+
+  <!-- 追加・編集モーダル -->
+  <dialog class="modal" id="item-modal" aria-labelledby="modal-title">
+    <form class="modal__form" id="item-form">
+      <header class="modal__header">
+        <h2 class="modal__title" id="modal-title">メモを追加</h2>
+        <button type="button" class="modal__close" id="modal-close" aria-label="閉じる">×</button>
+      </header>
+
+      <div class="modal__body">
+        <div class="type-toggle" id="type-toggle" role="group" aria-label="種類"></div>
+
+        <label class="field">
+          <span class="field__label">タイトル</span>
+          <input type="text" class="field__input" id="item-title" required maxlength="80" placeholder="例: 鎌倉の海辺カフェ">
+        </label>
+
+        <label class="field">
+          <span class="field__label">メモ（任意）</span>
+          <textarea class="field__input field__textarea" id="item-memo" rows="3" maxlength="500" placeholder="行きたい理由、候補日、リンクなど"></textarea>
+        </label>
+
+        <label class="field">
+          <span class="field__label">タグ</span>
+          <div class="tag-picker" id="tag-picker" role="group"></div>
+        </label>
+
+        <label class="field">
+          <span class="field__label">ステータス</span>
+          <select class="field__input" id="item-status">
+            <option value="someday">💭 いつか</option>
+            <option value="planned">📅 候補</option>
+            <option value="done">✅ 達成！</option>
+          </select>
+        </label>
+
+        <label class="field field--checkbox">
+          <input type="checkbox" id="item-pinned">
+          <span>📌 次はここ！（ピン留め）</span>
+        </label>
+      </div>
+
+      <footer class="modal__footer">
+        <button type="button" class="btn btn--danger" id="item-delete" hidden>削除</button>
+        <button type="submit" class="btn btn--primary">保存</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
